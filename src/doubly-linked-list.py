@@ -73,8 +73,38 @@ class LinkedList:
 
             itr = itr.next
             counter =+ 1
-        
 
+    def insert_after_value(self, data_after, data_to_insert):
+        if self.head is None:
+            return
+          
+        if self.head.value == data_after:
+            self.head.next = Node(data_to_insert, self.head.next)
+        
+        itr = self.head
+        while itr:
+            if itr.value == data_after:
+                itr.next = Node(data_to_insert, itr.next)
+                break 
+            
+            itr = itr.next
+
+    def remove_by_value(self, value):
+        if self.head is None:
+            return
+
+        if self.head.value == value:
+            self.head = self.head.next
+            return
+        
+        itr = self.head
+        while itr.next:
+            if itr.next.value == value:
+                itr.next = itr.next.next
+                break
+            itr = itr.next
+
+        
     def print(self):
         if self.head is None:
             print("Linked List is empty")
@@ -93,6 +123,28 @@ class LinkedList:
 
 
 ll = LinkedList()
-ll.insert_values(["banana", "apple", "mango", "pineapple" ])
-ll.insert_at(2, "figs")
+ll.insert_values(["banana","mango","grapes","orange"])
 ll.print()
+ll.insert_after_value("mango","apple")
+ll.print()
+ll.remove_by_value("orange")
+ll.print()
+ll.remove_by_value("figs")
+ll.print()
+ll.remove_by_value("banana")
+ll.remove_by_value("mango")
+ll.remove_by_value("apple")
+ll.remove_by_value("grapes")
+ll.print()
+
+
+
+
+# Add the following two methods 
+
+# def insert_after_value(self, data_after, data-to-insert)
+# Search for first occurence of data_after value in the linked list
+# Now insert data_to_insert after data_after_node
+
+#def remove_by_value(self, data)
+# Remove first node that contains data
