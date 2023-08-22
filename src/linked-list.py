@@ -100,7 +100,10 @@ class LinkedList:
         itr = self.head
         while itr.next:
             if itr.next.value == value:
-                itr.next = itr.next.next
+                if itr.next.next is None:
+                    itr.next = None
+                else:
+                    itr.next = itr.next.next
                 break
             itr = itr.next
 
